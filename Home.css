@@ -623,3 +623,45 @@
     margin-top: 198px;
   }
 }
+
+* { box-sizing: border-box; transition: 0.5s cubic-bezier(0.5,0,0.2,1) }
+.abs-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) }
+    
+.container 
+    width 80px
+    height @width
+    perspective 5000px
+    transform-style preserve-3d
+    &.flipped { transform: translate(-50%, -50%) rotateY(180deg); }
+    &.complete 
+        & .icon-background { fill: #21cd92; stroke: #21cd92; }
+        & .error { opacity: 0; transition: 0.3s ease }
+    &.error
+        & .icon-background { fill: #f44336; stroke: #f44336; }
+        & .check { opacity: 0; transition: 0.3s ease }
+
+.front, .back { backface-visibility: hidden; }    
+.front { z-index: 2; transform: rotateY(0deg); }
+.back { transform: rotateY(180deg) }
+    
+.rad-progress, .alt-state
+    height 80px
+    width @height
+    border-radius 100%
+    
+.rad-progress {transform: translate(-50%, -50%) rotateZ(-90deg)}
+.progress-background { stroke: rgba(0,0,0,0.08); stroke-width: 8; fill: none }
+.progress-bar { stroke: #2195cd; stroke-width: 8; fill: none; }
+.progress-label { font-family: 'Droid Sans Mono'; font-size: 14px}
+    
+.icon
+    height 30px
+    width @height
+    transition 0.3s 0.3s ease
+    &.check { background: url('https://skytango.com/wp-content/uploads/2016/11/White-Checkmark-icon.png') center no-repeat; background-size: 130%; }
+    &.error { background: url('http://aspiredm.com/wp-content/themes/Aspire2016/library/images/menu-cross.png') center no-repeat; background-size: 90%; }
+    /*
+    background-size cover !important
+    &.check { background: url('http://www.iconsdb.com/icons/preview/white/check-mark-xxl.png') center no-repeat }
+    &.error { background: url('http://www.iconsdb.com/icons/preview/white/x-mark-xxl.png') center no-repeat }
+    */
